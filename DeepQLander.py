@@ -77,9 +77,9 @@ experience = namedtuple("Experience", field_names=['state', 'action', 'reward', 
 def agent_learn(experiences, gamma):
     with tf.GradientTape() as tape:
         loss = utils.compute_loss(experiences, gamma, q_network, target_q_network)
-        gradients = tape.gradient(loss, q_network.trainable_variables)
-        optimizer.apply_gradients(zip(gradients, q_network.trainable_variables))
-        utils.update_target_network(q_network, target_q_network)
+    gradients = tape.gradient(loss, q_network.trainable_variables)
+    optimizer.apply_gradients(zip(gradients, q_network.trainable_variables))
+    utils.update_target_network(q_network, target_q_network)
 
 
 # training the agent
